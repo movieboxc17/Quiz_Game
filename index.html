@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Selection</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(to right, #2c3e50, #4ca1af);
+            color: #ffffff;
+            text-align: center;
+            overflow-x: hidden;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            margin: 50px auto;
+            padding: 40px;
+            max-width: 900px;
+            border-radius: 15px;
+            background-color: rgba(44, 62, 80, 0.9);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.6);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.1);
+            pointer-events: none;
+            border-radius: 15px;
+            z-index: 0;
+        }
+
+        h1 {
+            margin-bottom: 40px;
+            font-size: 2.8em;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.9);
+            position: relative;
+            z-index: 1;
+        }
+
+        .quiz-box {
+            background-color: #34495e;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 20px 0;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .quiz-box:hover {
+            background-color: #5d6d7e;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.8);
+        }
+
+        .quiz-title {
+            font-size: 1.8em;
+            font-weight: 700;
+            color: #f1c40f;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            position: relative;
+            z-index: 1;
+        }
+
+        .quiz-description {
+            margin-top: 10px;
+            font-size: 1.2em;
+            color: #bdc3c7;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hover-effect {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(241, 196, 15, 0.3);
+            border-radius: 15px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 0;
+        }
+
+        .quiz-box:hover .hover-effect {
+            opacity: 1;
+        }
+
+        /* Add a pulse effect on hover for quiz boxes */
+        .quiz-box:hover::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 15px;
+            transform: scale(1.05);
+            transition: transform 0.5s ease;
+            z-index: 0;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 600px) {
+            .quiz-box {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 2.2em;
+            }
+
+            .quiz-title {
+                font-size: 1.6em;
+            }
+
+            .quiz-description {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Select a Quiz</h1>
+    
+    <div class="quiz-box" onclick="window.location.href='quiz1.html'">
+        <div class="hover-effect"></div>
+        <div class="quiz-title">General Knowledge Quiz</div>
+        <div class="quiz-description">Test your knowledge with various trivia questions.</div>
+    </div>
+
+    <div class="quiz-box" onclick="window.location.href='quiz2.html'">
+        <div class="hover-effect"></div>
+        <div class="quiz-title">Math Quiz</div>
+        <div class="quiz-description">Challenge your math skills with arithmetic problems.</div>
+    </div>
+
+    <div class="quiz-box" onclick="window.location.href='quiz3.html'">
+        <div class="hover-effect"></div>
+        <div class="quiz-title">Science Quiz</div>
+        <div class="quiz-description">Explore questions related to science and technology.</div>
+    </div>
+
+    <!-- Add more quizzes as needed -->
+</div>
+
+</body>
+</html>
