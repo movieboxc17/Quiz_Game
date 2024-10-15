@@ -3,207 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Southeast Asia Geography Quiz</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Roboto', sans-serif;
-            background: linear-gradient(to right, #2c3e50, #4ca1af);
-            color: #ffffff;
-            text-align: center;
-            margin: 0;
-            padding: 0;
-        }
-
-        .container {
-            margin: 50px auto;
-            padding: 40px;
-            max-width: 900px;
-            border-radius: 15px;
-            background-color: rgba(44, 62, 80, 0.9);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.6);
-        }
-
-        h1 {
-            margin-bottom: 40px;
-            font-size: 2.8em;
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.9);
-        }
-
-        .question {
-            margin: 20px 0;
-            font-size: 1.5em;
-        }
-
-        .option {
-            background-color: #34495e;
-            padding: 15px;
-            margin: 10px 0;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .option:hover {
-            background-color: #5d6d7e;
-        }
-
-        .result {
-            font-size: 1.8em;
-            margin-top: 20px;
-        }
-
-        .button {
-            margin-top: 20px;
-            padding: 12px 20px;
-            background-color: #f1c40f;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .button:hover {
-            background-color: #d4ac0d;
-        }
-    </style>
+    <link rel="stylesheet" href="css/quiz.css">
+    <link rel="stylesheet" href="css/main.css">
+    <title>Quiz Application</title>
 </head>
 <body>
 
-<div class="container">
-    <h1>Southeast Asia Geography Quiz</h1>
-
-    <div id="quiz">
-        <div class="question" id="question"></div>
+<div id="quiz">
+    <div id="question"></div>
+    <div id="options">
         <div class="option" onclick="checkAnswer(0)"></div>
         <div class="option" onclick="checkAnswer(1)"></div>
         <div class="option" onclick="checkAnswer(2)"></div>
         <div class="option" onclick="checkAnswer(3)"></div>
     </div>
-    <div class="result" id="result" style="display: none;"></div>
-    <button class="button" id="restart" onclick="restartQuiz()" style="display: none;">Restart Quiz</button>
+    <div id="result"></div>
+    <button id="restart" onclick="restartQuiz()" style="display: none;">Restart</button>
 </div>
 
-<script>
-    const quizQuestions = [
-       {
-    question: "What is the capital city of Brunei?",
-    options: ["Bandar Seri Begawan", "Kutubin", "Belait", "Musan"],
-    answer: 0
-  },
-  {
-    question: "Which river flows through the Mekong Delta in Vietnam?",
-    options: ["Mekong River", "Chao Phraya River", "Sông Bé", "Sông Cái"],
-    answer: 0
-  },
-  {
-    question: "What is the name of the strait that separates the island of Sumatra from the Malay Peninsula?",
-    options: ["Straits of Malacca", "Gulf of Thailand", "Andaman Sea", "Java Sea"],
-    answer: 2
-  },
-  {
-    question: "Which country shares a border with Myanmar to the west?",
-    options: ["Thailand", "Laos", "Cambodia", "Vietnam"],
-    answer: 1
-  },
-  {
-    question: "What is the name of the highest mountain peak in Malaysia?",
-    options: ["Mount Kinabalu", "Mount Tambun", "Mount Jelawang", "Mount Penang Hill"],
-    answer: 0
-  },
-  {
-    question: "Which city is the capital of Timor-Leste?",
-    options: ["Dili", "Kupang", "Bali", "Bandar Seri Begawan"],
-    answer: 0
-  },
-  {
-    question: "What is the name of the largest island in Brunei?",
-    options: ["Borneo", "Sumatra", "Java", "Sulawesi"],
-    answer: 1
-  },
-  {
-    question: "Which river flows through the Phnom Penh metropolitan area in Cambodia?",
-    options: ["Tonle Sap River", "Sông Mekong", "Sông Tonle Chue", "Sông Bassac"],
-    answer: 2
-  },
-  {
-    question: "What is the name of the strait that separates the island of Java from the Malay Peninsula?",
-    options: ["Straits of Malacca", "Gulf of Thailand", "Andaman Sea", "Java Sea"],
-    answer: 3
-  },
-  {
-    question: "Which country has a coastline along the Gulf of Tonkin?",
-    options: ["Vietnam", "Laos", "Thailand", "Cambodia"],
-    answer: 0
-  },
-  {
-    question: "What is the name of the highest mountain peak in Timor-Leste?",
-    options: ["Mount Ramelau", "Mount Puncak Jaya", "Mount Batuk", "Mount Iden"],
-    answer: 0
-  },
-  {
-    question: "Which city is the capital of Myanmar's Shan State?",
-    options: ["Mandalay", "Yangon", "Bagan", "Kengtung"],
-    answer: 3
-  },
-  {
-    question: "What is the name of the largest island in Indonesia?",
-    options: ["Sumatra", "Borneo", "Java", "Sulawesi"],
-    answer: 1
-  },
-  {
-    question: "Which river flows through the city of Vientiane in Laos?",
-    options: ["Mekong River", "Namsan River", "Nam Phou", "Nam Khan"],
-    answer: 2
-  },
-  {
-    question: "What is the name of the strait that separates the island of Borneo from the Philippines?",
-    options: ["Straits of Malacca", "Gulf of Thailand", "Andaman Sea", "Celebes Sea"],
-    answer: 3
-  }
-];
-    let currentQuestionIndex = 0;
-    let score = 0;
+<div id="loginModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('loginModal')">&times;</span>
+        <form id="loginForm" onsubmit="event.preventDefault(); login();">
+            <input type="text" id="login-email" placeholder="Email" required>
+            <input type="password" id="login-password" placeholder="Password" required>
+            <input type="submit" value="Login">
+        </form>
+    </div>
+</div>
 
-    function loadQuestion() {
-        const currentQuestion = quizQuestions[currentQuestionIndex];
-        document.getElementById("question").innerText = currentQuestion.question;
-        const options = document.querySelectorAll(".option");
-        options.forEach((option, index) => {
-            option.innerText = currentQuestion.options[index];
-        });
-    }
+<div id="signupModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('signupModal')">&times;</span>
+        <form id="signupForm" onsubmit="event.preventDefault(); signup();">
+            <input type="text" id="signup-email" placeholder="Email" required>
+            <input type="password" id="signup-password" placeholder="Password" required>
+            <input type="submit" value="Sign Up">
+        </form>
+    </div>
+</div>
 
-    function checkAnswer(selected) {
-        if (selected === quizQuestions[currentQuestionIndex].answer) {
-            score++;
-        }
-        currentQuestionIndex++;
-        if (currentQuestionIndex < quizQuestions.length) {
-            loadQuestion();
-        } else {
-            showResult();
-        }
-    }
-
-    function showResult() {
-        document.getElementById("quiz").style.display = "none";
-        document.getElementById("result").innerText = `Your score: ${score} out of ${quizQuestions.length}`;
-        document.getElementById("result").style.display = "block";
-        document.getElementById("restart").style.display = "block";
-    }
-
-    function restartQuiz() {
-        currentQuestionIndex = 0;
-        score = 0;
-        document.getElementById("quiz").style.display = "block";
-        document.getElementById("result").style.display = "none";
-        document.getElementById("restart").style.display = "none";
-        loadQuestion();
-    }
-
-    loadQuestion(); // Load the first question
-</script>
-
+<script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/quiz.js"></script>
 </body>
 </html>
