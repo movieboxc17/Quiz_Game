@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz Selection</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon"> <!-- Favicon link -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
@@ -101,7 +102,6 @@
             opacity: 1;
         }
 
-        /* Add a pulse effect on hover for quiz boxes */
         .quiz-box:hover::before {
             content: '';
             position: absolute;
@@ -116,7 +116,6 @@
             z-index: 0;
         }
 
-        /* Responsive styles */
         @media (max-width: 600px) {
             .quiz-box {
                 padding: 20px;
@@ -140,13 +139,12 @@
 
 <div class="container">
     <h1>Select a Quiz</h1>
-    
-    <div class="quiz-box" onclick="window.location.href='quiz1.html'">
+ 
+   <div class="quiz-box" onclick="window.location.href='quiz1.html'">
     <div class="hover-effect"></div>
     <div class="quiz-title">Southeast Asia Geography Quiz</div>
     <div class="quiz-description">Test your knowledge about the geography and culture of Southeast Asia.</div>
 </div>
-
     <!-- Add more quizzes as needed -->
 </div>
 
